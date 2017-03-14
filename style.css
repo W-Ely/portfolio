@@ -2,3 +2,23 @@
   margin: 0;
   padding: 0;
 }
+section, div{
+  border: 2px solid black;
+}
+.landing {
+    height: 100vh;
+    background: gray;
+  }
+
+.contact {
+    height: 100vh;
+    background: blue;
+  }
+
+@media screen and (min-width: 960px){
+  .thumb {
+    height: 600px;
+    width: 800px;
+    background: white;
+  }
+}
