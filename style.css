@@ -1,10 +1,50 @@
-* {
-  margin: 0;
-  padding: 0;
+header {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
-section, div{
-  border: 2px solid black;
+
+.header-name {
+  padding: 8px;
+  font-size: 38px;
+  color: white;
+  float: left;
 }
+
+.nav {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+.drop-nav {
+  float: right;
+  padding: 5px;
+}
+
+.nav ul {
+  display: none;
+  background-color: #333;
+  margin-top: 55px;
+  list-style: none;
+  padding: 0px;
+}
+
+.nav:hover ul {
+  display: block;
+}
+
+.nav li {
+  height: 60px;
+  font-size: 38px;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+}
+
 .landing {
     height: 100vh;
     background: gray;
@@ -14,38 +54,29 @@ section, div{
     height: 100vh;
     background: blue;
   }
-  
-@media screen and (min-width: 480px){
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
 
-li {
-    float: left;
-}
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+@media screen and (min-width: 777px){
+  .drop-nav {
+    display: none !important;
+  }
+  .nav ul {
+    display: inline-block;
+    float: right;
+    margin-top: 8px;
+  }
 
-li a:hover:not(.active) {
-    background-color: #111;
-}
+  li {
+    display: inline;
+  }
 
-.active {
-    background-color: #4CAF5f;
-}
+  li a {
+      padding: 8px;
+  }
+
+  li a:hover {
+      background-color: #111;
+  }
 }
 
 @media screen and (min-width: 960px){
