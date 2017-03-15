@@ -1,3 +1,4 @@
+
 header {
   overflow: hidden;
   background-color: #333;
@@ -8,4 +9,8 @@ header {
 
 section {
   min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
 }

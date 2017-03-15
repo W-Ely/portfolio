@@ -1,4 +1,4 @@
-
+/*header bar fixed to top of screen*/
 .header-name {
   padding: 8px;
   font-size: 38px;
@@ -6,6 +6,7 @@
   float: left;
 }
 
+/*nav bar*/
 .nav {
   position: fixed;
   top: 0px;
@@ -42,14 +43,22 @@ li a:hover {
       background-color: #111;
 }
 
-.landing {
+/*landing and bottom contact styles*/
+.landing, .contact {
     background: gray;
   }
 
-.contact {
-    background: blue;
-  }
+/*hide template*/
+.template {
+  display: none;
+}
 
+/*project section styling*/
+.info .name {
+  text-align: center;
+}
+
+/*anything larger than 777px formats like this*/
 @media screen and (min-width: 777px){
   .drop-nav {
     display: none !important;
@@ -67,12 +76,29 @@ li a:hover {
   li a {
       padding: 8px;
   }
-}
 
-@media screen and (min-width: 960px){
-  .thumb {
-    height: 600px;
-    width: 800px;
-    background: white;
+  /*projects area*/
+  .preview {
+    width: 46%;
+    display: inline-block;
+  }
+  .even .info {
+    width:46%;
+    float:right;
+  }
+  hr {
+    clear:both;
+  }
+  .odd .preview {
+    float:right;
+    margin-bottom: 20px;
+  }
+  .info {
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+  .preview {
+    margin-left: 2%;
+    margin-right: 2%;
   }
 }

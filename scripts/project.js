@@ -1,35 +1,40 @@
 'use strict';
 var count = 0;
+var projects = [];
 
 //hope to pass in an object instead of like this, but then why sue the constructor? to be continued...
-function Project(name, link, summery, thumb){
-  this.name = name;
-  this.address = link;
-  this.summery = summery;
-  this.thumb = thumb;
+function Project(projectData){
+  this.name = projectData.name;
+  this.address = projectData.link;
+  this.summery = projectData.summery;
+  this.preview = projectData.preview;
 }
 
-Project.prototype.pageProject = function () {
+Project.prototype.toHtml = function () {
   var parity;
+  var $projectEl = $('#template').clone();
+  $projectEl.removeClass();
+
   if (count % 2 === 0){
     parity = 'even';
   } else {
     parity = 'odd';
   }
-  //jquery to populate projects to page
-  // $(document).ready(function(){
-  //   var $projectsEl = $('#projects');
-  //   var $projectEl = $(document).html('<div class="project ' + parity + '"></div>')
-  //   var $thumbEl = $('img')
-  // });
+  $projectEl.attr('class', 'project ' + parity); //change parity
+
+  $projectEl.find('.name').text(this.name);
+  $projectEl.find('.sum').text(this.summery);
+  $projectEl.find('a').attr({href: this.address, target: '_blank'});
+  $projectEl.find('img').attr('src', this.preview);
+
   count++;
+  return $projectEl;
 };
-// hopeful rough project layout
-// <div class="project even">
-//   <div class="thumb">
-//
-//   </div>
-//   <div class="sum">
-//
-//   </div>
-// </div>
+
+projectData.forEach(function(project) {
+  projects.push(new Project(project));
+});
+
+projects.forEach(function(project) {
+  $('#projects').append(project.toHtml());
+});
