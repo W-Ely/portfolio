@@ -41,7 +41,6 @@ function findGithubRepos(){
       if (status === 'success'){
         response.forEach(function(repo){
           if (!repo.fork){
-            console.log(repo);
             projects.push(new Project(repo));
           }
         });
@@ -58,7 +57,7 @@ function buildProjectsPage(){
   });
 
   projects.forEach(function(project) {
-    $('#projects').append(project.toHtml());
+    $('.projects').append(project.toHtml());
   });
 }
 
