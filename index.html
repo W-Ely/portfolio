@@ -16,22 +16,22 @@
     <header>
       <div class="header-name">W. Ely Paysinger</div>
       <nav class="nav">
-        <div class="drop-nav fa fa-bars fa-3x fa-inverse"></div>
+        <div class="drop-nav fa fa-bars fa-3x"></div>
         <ul>
-          <li><a class="active" href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a data-content="landing" href="#">About</a></li>
+          <li><a data-content="projects" href="#">Projects</a></li>
+          <li><a data-content="contact" href="#">Contact</a></li>
         </ul>
       </nav>
     </header>
 
-    <section id="about" class="landing">
+    <section class="landing">
       <br><br><br><br>
       <h1>Welcome!</h1>
       <p>My name is Ely, I love to code. ipsum ipsum ipsum...</p>
     </section>
 
-    <section id="projects" class="projects">
+    <section class="projects">
       <br><br><br><br>
       <h1>Projects</h1>
       <hr>
@@ -45,19 +45,23 @@
         <div class="info">
           <h2 class="name"></h2>
           <p class="sum"></p>
+          <p>Last Updated: <span class="last-updated"></span></p>
         </div>
         <hr>
       </div>
 
     </section>
 
-    <section id="contact" class="contact">
+    <section class="contact">
       <br><br><br><br>
-      <h1>Contact Me!</h1>
-      <a class="fa fa-github" href="https://github.com/W-Ely"target="_blank">Github</a>
-      <a class="fa fa-envelope"href="mailto:paysinger@gmail.com" target="_blank">Email Me: Paysinger@gmail.com(link)</a>
-      <a class="fa fa-linkedin" href="https://www.linkedin.com/in/w-ely-paysinger/" target="_blank">LinkedIn</a>
+      <div>
+        <h1>Contact Me!</h1>
+        <a class="fa fa-github" href="https://github.com/W-Ely"target="_blank">Github</a>
+        <a class="fa fa-envelope"href="mailto:paysinger@gmail.com" target="_blank">Email Me: Paysinger@gmail.com(link)</a>
+        <a class="fa fa-linkedin" href="https://www.linkedin.com/in/w-ely-paysinger/" target="_blank">LinkedIn</a>
+      </div>
     </section>
+    <script type="text/javascript" src="scripts/nav.js"></script>
     <script type="text/javascript" src="scripts/projects.js"></script>
     <script type="text/javascript" src="scripts/project.js"></script>
   </body>

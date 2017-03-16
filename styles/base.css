@@ -1,7 +1,7 @@
 
 header {
   overflow: hidden;
-  background-color: #333;
+  background-color: #003333;
   position: fixed;
   top: 0;
   width: 100%;
@@ -14,3 +14,7 @@ section {
 img {
   max-width: 100%;
 }
+ h1 {
+   font-size: 32px;
+   margin-left: 10px;
+ }
