@@ -60,6 +60,14 @@ li a:hover {
   text-align: center;
 }
 
+/*contact styling*/
+/*TODO working on css here*/
+.contact div{
+  width: 80%;
+  height: 80%;
+  margin: auto;
+}
+
 /*anything larger than 777px formats like this*/
 @media screen and (min-width: 777px){
   .drop-nav {
