@@ -2,13 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" >
-    <title></title>
+    <title>Ely's Portfolio</title>
     <link rel="stylesheet" href="vendor/styles/normalize.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
     </script>
   </head>
+
   <body>
     <header>
       <div class="header-name">W. Ely Paysinger</div>
@@ -21,32 +24,41 @@
         </ul>
       </nav>
     </header>
+
     <section id="about" class="landing">
-      About Me
+      <br><br><br><br>
+      <h1>Welcome!</h1>
+      <p>My name is Ely, I love to code. ipsum ipsum ipsum...</p>
     </section>
+
     <section id="projects" class="projects">
-      <div class="project even">
-        <div class="thumb">
+      <br><br><br><br>
+      <h1>Projects</h1>
+      <hr>
 
+      <div id="template" class="template project even-or-odd">
+        <div class="preview">
+          <a href="">
+            <img src="" alt="">
+          </a>
         </div>
-        <div class="sum">
-
+        <div class="info">
+          <h2 class="name"></h2>
+          <p class="sum"></p>
         </div>
+        <hr>
       </div>
-      <div class="project odd">
-        <div class="thumb">
 
-        </div>
-        <div class="sum">
-
-        </div>
-      </div>
     </section>
+
     <section id="contact" class="contact">
-      Contact Me
+      <br><br><br><br>
+      <h1>Contact Me!</h1>
+      <a class="fa fa-github" href="https://github.com/W-Ely"target="_blank">Github</a>
+      <a class="fa fa-envelope"href="mailto:paysinger@gmail.com" target="_blank">Email Me: Paysinger@gmail.com(link)</a>
+      <a class="fa fa-linkedin" href="https://www.linkedin.com/in/w-ely-paysinger/" target="_blank">LinkedIn</a>
     </section>
-    <script type="text/javascript" src="app.js">
-
-    </script>
+    <script type="text/javascript" src="scripts/projects.js"></script>
+    <script type="text/javascript" src="scripts/project.js"></script>
   </body>
 </html>
