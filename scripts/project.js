@@ -5,9 +5,10 @@ var projects = [];
 //hope to pass in an object instead of like this, but then why sue the constructor? to be continued...
 function Project(projectData){
   this.name = projectData.name;
-  this.address = projectData.link;
-  this.summery = projectData.summery;
-  this.preview = projectData.preview;
+  this.address = projectData.html_url;
+  this.summery = projectData.description;
+  this.lastUpdated = projectData.updated_at;
+  this.preview = 'assets/Sceenshot.png'
 }
 
 Project.prototype.toHtml = function () {
@@ -31,10 +32,33 @@ Project.prototype.toHtml = function () {
   return $projectEl;
 };
 
-projectData.forEach(function(project) {
-  projects.push(new Project(project));
-});
+function findGithubRepos(){
+  $.ajax({
+    dataType: 'json',
+    url: 'https://api.github.com/users/W-Ely/repos',
+    success: function(response, status){
+      if (status === 'success'){
+        response.forEach(function(repo){
+          if (!repo.fork){
+            projectData.push(new Project(repo));
+          }
+        });
+        buildProjectsPage();
+      }
+    }
+  });
+}
 
-projects.forEach(function(project) {
-  $('#projects').append(project.toHtml());
-});
+function buildProjectsPage(){
+  // bring in those sweet repos
+
+  projectData.forEach(function(project) {
+    projects.push(new Project(project));
+  });
+
+  projects.forEach(function(project) {
+    $('#projects').append(project.toHtml());
+  });
+}
+
+findGithubRepos();
