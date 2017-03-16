@@ -1,5 +1,6 @@
 'use strict';
 
+//scroll that thing.
 $('.nav ul').on('click', 'a', function(event){
   event.preventDefault();
   console.log('clicked');

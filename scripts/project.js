@@ -2,12 +2,13 @@
 var count = 0;
 var projects = [];
 
-//hope to pass in an object instead of like this, but then why sue the constructor? to be continued...
 function Project(projectData){
   this.name = projectData.name;
+  //TODO if the project has a live address use it.
   this.address = projectData.html_url;
   this.summery = projectData.description;
-  this.lastUpdated = projectData.updated_at;
+  //TODO need to better handle this date.
+  this.lastUpdated = projectData.updated_at.slice(0, 10);
   this.preview = 'assets/Sceenshot.png'
 }
 
@@ -27,7 +28,7 @@ Project.prototype.toHtml = function () {
   $projectEl.find('.sum').text(this.summery);
   $projectEl.find('a').attr({href: this.address, target: '_blank'});
   $projectEl.find('img').attr('src', this.preview);
-
+  $projectEl.find('.last-updated').text(this.lastUpdated);
   count++;
   return $projectEl;
 };
@@ -50,11 +51,20 @@ function findGithubRepos(){
   });
 }
 
+function sortThoseProjectsByDate(){
+  projects.sort(function(a, b){
+    //regEx to remove hyphens. could use new Date() but didn't
+    return b.lastUpdated.replace(/-/g, '') - a.lastUpdated.replace(/-/g, '');
+  });
+}
+
 function buildProjectsPage(){
 
   projectData.forEach(function(project) {
     projects.push(new Project(project));
   });
+
+  sortThoseProjectsByDate();
 
   projects.forEach(function(project) {
     $('.projects').append(project.toHtml());

@@ -14,3 +14,7 @@ section {
 img {
   max-width: 100%;
 }
+ h1 {
+   font-size: 32px;
+   margin-left: 10px;
+ }
