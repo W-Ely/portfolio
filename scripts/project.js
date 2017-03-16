@@ -32,6 +32,7 @@ Project.prototype.toHtml = function () {
   return $projectEl;
 };
 
+// bring in those sweet repos
 function findGithubRepos(){
   $.ajax({
     dataType: 'json',
@@ -40,7 +41,8 @@ function findGithubRepos(){
       if (status === 'success'){
         response.forEach(function(repo){
           if (!repo.fork){
-            projectData.push(new Project(repo));
+            console.log(repo);
+            projects.push(new Project(repo));
           }
         });
         buildProjectsPage();
@@ -50,7 +52,6 @@ function findGithubRepos(){
 }
 
 function buildProjectsPage(){
-  // bring in those sweet repos
 
   projectData.forEach(function(project) {
     projects.push(new Project(project));
