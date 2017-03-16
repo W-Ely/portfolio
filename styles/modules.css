@@ -2,7 +2,7 @@
 .header-name {
   padding: 8px;
   font-size: 38px;
-  color: white;
+  color: #c1eef2;
   float: left;
 }
 
@@ -15,11 +15,12 @@
 .drop-nav {
   float: right;
   padding: 5px;
+  color: #c1eef2;
 }
 
 .nav ul {
   display: none;
-  background-color: #333;
+  background-color: #003333;
   margin-top: 55px;
   list-style: none;
   padding: 0px;
@@ -36,7 +37,7 @@
 
 li a {
   text-decoration: none;
-  color: white;
+  color: #c1eef2;
 }
 
 li a:hover {
@@ -45,7 +46,8 @@ li a:hover {
 
 /*landing and bottom contact styles*/
 .landing, .contact {
-    background: gray;
+    background: #c1eef2;
+    color: #003333
   }
 
 /*hide template*/
