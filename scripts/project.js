@@ -14,21 +14,12 @@ function Project(projectData){
 
 Project.prototype.toHtml = function () {
   var parity;
-  var $projectEl = $('#template').clone();
-  $projectEl.removeClass();
-
   if (count % 2 === 0){
     parity = 'even';
   } else {
     parity = 'odd';
   }
-  $projectEl.attr('class', 'project ' + parity); //change parity
-
-  $projectEl.find('.name').text(this.name);
-  $projectEl.find('.sum').text(this.summery);
-  $projectEl.find('a').attr({href: this.address, target: '_blank'});
-  $projectEl.find('img').attr('src', this.preview);
-  $projectEl.find('.last-updated').text(this.lastUpdated);
+  // TODO add the handlebars code
   count++;
   return $projectEl;
 };
