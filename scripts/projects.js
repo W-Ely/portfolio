@@ -21,6 +21,13 @@ var projectData = [
     html_url: 'http://testmy.net',
     description: 'ipsum lots o text',
     preview: 'assets/Sceenshot.png',
-    updated_at: '2015-02-08'
+    updated_at: '2017-02-08'
+  },
+  {
+    name: 'test4',
+    html_url: 'http://testmy.net',
+    description: 'ipsum lots o text',
+    preview: 'assets/Sceenshot.png',
+    updated_at: '2016-02-08'
   }
 ];

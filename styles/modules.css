@@ -92,21 +92,12 @@ li a:hover {
     width: 46%;
     display: inline-block;
   }
-  .even .info {
-    width:46%;
-    float:right;
-  }
-  hr {
-    clear:both;
-  }
-  .odd .preview {
-    float:right;
-    margin-bottom: 20px;
-  }
+
   .info {
     margin-right: 2%;
     margin-left: 2%;
   }
+
   .preview {
     margin-left: 2%;
     margin-right: 2%;
