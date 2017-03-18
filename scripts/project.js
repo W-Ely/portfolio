@@ -59,7 +59,7 @@ portfolio.buildProjectsPage = function(){
   portfolio.sortThoseProjectsByDate();
 
   portfolio.projects.forEach(function(project) {
-    $('.projects').append(project.toHtml());
+    $('#projects').append(project.toHtml());
   });
 }
 

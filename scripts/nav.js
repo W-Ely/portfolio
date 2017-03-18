@@ -16,6 +16,9 @@ $('.landing').show();
 $('.nav').on('click', 'li', function(event){
   event.preventDefault();
   $('section').hide();
-  $( '.' + $(this).data('page') ).fadeIn();
+  $( '#' + $(this).data('page') ).fadeIn();
   // debugger;
 });
+
+//on click on mobile, menu hides
+$();

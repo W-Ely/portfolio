@@ -29,6 +29,9 @@
 .nav:hover ul {
   display: block;
 }
+.nav:target ul {
+  display: hidden;
+}
 
 .nav li {
   height: 60px;
