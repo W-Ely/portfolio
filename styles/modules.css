@@ -29,8 +29,9 @@
 .nav:hover ul {
   display: block;
 }
-.nav:target ul {
-  display: hidden;
+
+.nav:target ul li {
+  display: none;
 }
 
 .nav li {

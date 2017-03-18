@@ -8,16 +8,28 @@
 //     scrollTop: $('.' + $(this).data('content')).offset().top
 //   }, 1000);
 // });
+var nav = {};
 
 //hide rather than scroll
-$('section').hide();
-$('#landing').show();
-$('.nav').on('click', 'li', function(event){
-  event.preventDefault();
+nav.prepareTabs = function() {
   $('section').hide();
-  $( '#' + $(this).data('page') ).fadeIn();
-  // debugger;
-});
+  $('#landing').show();
+  $('.nav').on('click', 'li', function(event){
+    event.preventDefault();
+    $('section').hide();
+    $( '#' + $(this).data('page') ).fadeIn();
+  });
+}
 
-//on click on mobile, menu hides
-$();
+//TODO on click on mobile, menu hides, harder than it sounds with css..
+// nav.manageMobile = function(){
+//   $('nav ul').on('click', function(){
+//     if ($(window).width() <= 762){
+//       console.log('clicked');
+//       $('.nav ul').attr('style', 'display: none')
+//     }
+//   });
+// }
+
+nav.prepareTabs();
+// nav.manageMobile();
