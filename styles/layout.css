@@ -1,4 +1,8 @@
 /*styles*/
+.top {
+  margin-top: 70px;
+}
+
 @media screen and (min-width: 777px){
 
   /*projects area*/
@@ -6,7 +10,7 @@
     width:46%;
     float:right;
   }
-  
+
   hr {
     clear:both;
   }
