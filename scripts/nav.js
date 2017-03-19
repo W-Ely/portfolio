@@ -1,7 +1,7 @@
 'use strict';
 
 //scroll that thing, may use later haven't decided...
-// $('.nav ul').on('click', 'a', function(event){
+// $('.side-menu ul').on('click', 'a', function(event){
 //   event.preventDefault();
 //   console.log('clicked');
 //   $('body').animate({
@@ -14,7 +14,7 @@ var nav = {};
 nav.prepareTabs = function() {
   $('section').hide();
   $('#landing').show();
-  $('.nav').on('click', 'li', function(event){
+  $('.side-menu').on('click', 'li', function(event){
     event.preventDefault();
     $('section').hide();
     $( '#' + $(this).data('page') ).fadeIn();
@@ -26,7 +26,7 @@ nav.prepareTabs = function() {
 //   $('nav ul').on('click', function(){
 //     if ($(window).width() <= 762){
 //       console.log('clicked');
-//       $('.nav ul').attr('style', 'display: none')
+//       $('.side-menu ul').attr('style', 'display: none')
 //     }
 //   });
 // }
