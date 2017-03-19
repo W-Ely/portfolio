@@ -14,8 +14,14 @@ var nav = {};
 nav.prepareTabs = function() {
   $('section').hide();
   $('#landing').show();
-  $('.side-menu').on('click', 'li', function(event){
+  $('nav').on('click', '*[data-page]', function(event){
     event.preventDefault();
+    if ($(this).data('page') === 'landing'){
+      $('nav').find('*').show();
+    }  else {
+      $(this).hide();
+      $(this).siblings().show();
+    }
     $('section').hide();
     $( '#' + $(this).data('page') ).fadeIn();
   });
