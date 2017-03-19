@@ -30,10 +30,6 @@
   display: block;
 }
 
-.nav:target ul li {
-  display: none;
-}
-
 .nav li {
   height: 60px;
   font-size: 38px;
