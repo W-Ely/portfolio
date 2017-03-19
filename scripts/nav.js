@@ -17,10 +17,10 @@ nav.prepareTabs = function() {
   $('nav').on('click', '*[data-page]', function(event){
     event.preventDefault();
     if ($(this).data('page') === 'landing'){
-      $('nav').find('*').show();
+      $('nav').find('*').fadeIn();
     }  else {
       $(this).hide();
-      $(this).siblings().show();
+      $(this).siblings().fadeIn();
     }
     $('section').hide();
     $( '#' + $(this).data('page') ).fadeIn();
