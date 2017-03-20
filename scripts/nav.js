@@ -7,7 +7,8 @@ var nav = {
 //hide rather than scroll, replaces tab in place rather than simply hiding and showing. The below code fixes the hover problem for as well mobile. Menu now acts as expected.
 nav.prepareTabs = function() {
   $('section').hide();
-  $('#landing').show();
+  // $('#landing').show();
+  $('#projects').show();
   $('nav').on('click', '*[data-page]', function(event){
     event.preventDefault();
     if ($(this).data('page') === 'landing'){

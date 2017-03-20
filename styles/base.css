@@ -1,4 +1,7 @@
-
+body {
+  /*Prevents scrolling on projects page. Intended function*/
+  overflow: hidden;
+}
 header {
   overflow: hidden;
   background-color: #003333;
