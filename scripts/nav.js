@@ -21,6 +21,7 @@ nav.prepareTabs = function() {
       if (!nav.$clickedTab){
         nav.$clickedTab = $(this).detach();
         nav.$clickedTab.hide();
+        // debugger;
       } else {
         $(nav.$clickedTab).hide();
         $(this).replaceWith(nav.$clickedTab);
@@ -32,14 +33,5 @@ nav.prepareTabs = function() {
     $( '#' + $(this).data('page') ).fadeIn();
   });
 }
-
-//scroll the project carousel
-$('.side-menu ul').on('click', 'a', function(event){
-  event.preventDefault();
-  console.log('clicked');
-  $('body').animate({
-    scrollTop: $('.' + $(this).data('content')).offset().top
-  }, 1000);
-});
 
 nav.prepareTabs();
