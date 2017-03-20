@@ -1,7 +1,6 @@
 'use strict';
 var portfolio = {
   projects: [],
-  count: 0
 };
 
 function Project(projectData){
@@ -14,7 +13,6 @@ function Project(projectData){
 }
 
 Project.prototype.toHtml = function() {
-  portfolio.count++;
   // useing handlebars for javasript templeting.
   return Handlebars.compile($('#project-template').html())(this);
 };
@@ -31,12 +29,12 @@ portfolio.findGithubRepos = function() {
   //           portfolio.projects.push(new Project(repo));
   //         }
   //       });
-  //       portfolio.buildProjectsPage();
+  //       portfolio.buildProjectsList();
   //     }
   //   }
   // });
   //duplicate not need to keep spamming api calls while testing
-  portfolio.buildProjectsPage();
+  portfolio.buildProjectsList();
 }
 
 portfolio.sortThoseProjectsByDate = function(){
@@ -46,7 +44,7 @@ portfolio.sortThoseProjectsByDate = function(){
   });
 }
 
-portfolio.buildProjectsPage = function(){
+portfolio.buildProjectsList = function(){
 
   projectData.forEach(function(project) {
     portfolio.projects.push(new Project(project));
@@ -57,10 +55,6 @@ portfolio.buildProjectsPage = function(){
   portfolio.projects.forEach(function(project) {
     $('.projects-carousel').append(project.toHtml());
   });
-  //wrap all 'article's in a table and row so it will scroll to the right
-  $(".projects-carousel").wrapInner("<table><tr>");
-  // put each 'article' in a column
-  $("article").wrap("<td>");
 }
 
 portfolio.findGithubRepos();
