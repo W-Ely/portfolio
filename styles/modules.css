@@ -46,11 +46,6 @@ li:hover, .header-name:hover {
     color: #003333
   }
 
-/*hide template*/
-.template {
-  display: none;
-}
-
 /*project section styling*/
 .info .name {
   text-align: center;
@@ -61,7 +56,7 @@ li:hover, .header-name:hover {
 .contact div{
   width: 80%;
   height: 80%;
-  margin: auto;
+  /*margin: auto;*/
 }
 
 /*anything larger than 777px formats like this*/

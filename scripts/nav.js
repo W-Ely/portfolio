@@ -12,7 +12,7 @@ var nav = {
   $clickedTab: undefined
 };
 
-//hide rather than scroll, replaces tab in place rather than simply hiding and showing. Something about the below code fixes the hover problem for mobile. Menu now acts as expected.
+//hide rather than scroll, replaces tab in place rather than simply hiding and showing. The below code fixes the hover problem for as well mobile. Menu now acts as expected.
 nav.prepareTabs = function() {
   $('section').hide();
   $('#landing').show();
