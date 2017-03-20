@@ -30,17 +30,17 @@
   display: block;
 }
 
+.nav:target ul li {
+  display: none;
+}
+
 .nav li {
   height: 60px;
   font-size: 38px;
-}
-
-li a {
-  text-decoration: none;
   color: #c1eef2;
 }
 
-li a:hover {
+li:hover {
       background-color: #111;
 }
 
@@ -81,10 +81,7 @@ li a:hover {
 
   li {
     display: inline;
-  }
-
-  li a {
-      padding: 8px;
+    padding: 8px;
   }
 
   /*projects area*/
@@ -92,21 +89,12 @@ li a:hover {
     width: 46%;
     display: inline-block;
   }
-  .even .info {
-    width:46%;
-    float:right;
-  }
-  hr {
-    clear:both;
-  }
-  .odd .preview {
-    float:right;
-    margin-bottom: 20px;
-  }
+
   .info {
     margin-right: 2%;
     margin-left: 2%;
   }
+
   .preview {
     margin-left: 2%;
     margin-right: 2%;

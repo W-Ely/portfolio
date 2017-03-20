@@ -10,6 +10,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
     </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+
+    <script type="text/x-handlebars-template" id="project-template">
+      <div class="project {{parity}}">
+        <div class="preview">
+          <a href="{{address}}">
+            <img src="{{preview}}" alt="">
+          </a>
+        </div>
+        <div class="info">
+          <h2 class="name">{{name}}</h2>
+          <p class="sum">{{summery}}</p>
+          <p>Last Updated: <span class="last-updated">{{lastUpdated}}</span></p>
+        </div>
+        <hr>
+      </div>
+    </script>
   </head>
 
   <body>
@@ -18,43 +35,25 @@
       <nav class="nav">
         <div class="drop-nav fa fa-bars fa-3x"></div>
         <ul>
-          <li><a data-content="landing" href="#">About</a></li>
-          <li><a data-content="projects" href="#">Projects</a></li>
-          <li><a data-content="contact" href="#">Contact</a></li>
+          <li data-page="landing">About</li>
+          <li data-page="projects">Projects</li>
+          <li data-page="contact">Contact</li>
         </ul>
       </nav>
     </header>
 
-    <section class="landing">
-      <br><br><br><br>
-      <h1>Welcome!</h1>
+    <section id="landing">
+      <h1 class="top">Welcome!</h1>
       <p>My name is Ely, I love to code. ipsum ipsum ipsum...</p>
     </section>
 
-    <section class="projects">
-      <br><br><br><br>
-      <h1>Projects</h1>
+    <section id="projects">
+      <h1 class="top">Projects</h1>
       <hr>
-
-      <div id="template" class="template project even-or-odd">
-        <div class="preview">
-          <a href="">
-            <img src="" alt="">
-          </a>
-        </div>
-        <div class="info">
-          <h2 class="name"></h2>
-          <p class="sum"></p>
-          <p>Last Updated: <span class="last-updated"></span></p>
-        </div>
-        <hr>
-      </div>
-
     </section>
 
-    <section class="contact">
-      <br><br><br><br>
-      <div>
+    <section id="contact">s
+      <div class="top">
         <h1>Contact Me!</h1>
         <a class="fa fa-github" href="https://github.com/W-Ely"target="_blank">Github</a>
         <a class="fa fa-envelope"href="mailto:paysinger@gmail.com" target="_blank">Email Me: Paysinger@gmail.com(link)</a>
