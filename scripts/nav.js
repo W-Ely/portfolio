@@ -11,9 +11,8 @@
 var nav = {
   $clickedTab: undefined
 };
-//TODO once nav tab has been clicked, the replacment tab fades in where the other tab hides.
 
-//hide rather than scroll
+//hide rather than scroll, replaces tab in place rather than simply hiding and showing. Something about the below code fixes the hover problem for mobile. Menu now acts as expected.
 nav.prepareTabs = function() {
   $('section').hide();
   $('#landing').show();
@@ -24,7 +23,7 @@ nav.prepareTabs = function() {
         nav.$clickedTab.hide();
         $(this).next().find('ul').prepend(nav.$clickedTab);
         nav.$clickedTab.fadeIn();
-        // $('nav').find('*').fadeIn();
+        nav.$clickedTab = undefined;
       }
     }  else {
       if (!nav.$clickedTab){
@@ -36,22 +35,10 @@ nav.prepareTabs = function() {
         nav.$clickedTab.fadeIn();
         nav.$clickedTab = $(this);
       }
-      $(this).siblings().fadeIn();
     }
     $('section').hide();
     $( '#' + $(this).data('page') ).fadeIn();
   });
 }
 
-//TODO on click on mobile, menu hides, harder than it sounds with css..
-// nav.manageMobile = function(){
-//   $('nav ul').on('click', function(){
-//     if ($(window).width() <= 762){
-//       console.log('clicked');
-//       $('.side-menu ul').attr('style', 'display: none')
-//     }
-//   });
-// }
-
 nav.prepareTabs();
-// nav.manageMobile();
