@@ -22,25 +22,28 @@ Project.prototype.toHtml = function() {
   }
   this.parity = parity;
   portfolio.count++;
+  // useing handlebars for javasript templeting.
   return Handlebars.compile($('#project-template').html())(this);
 };
 
 // bring in those sweet repos
 portfolio.findGithubRepos = function() {
-  $.ajax({
-    dataType: 'json',
-    url: 'https://api.github.com/users/W-Ely/repos',
-    success: function(response, status){
-      if (status === 'success'){
-        response.forEach(function(repo){
-          if (!repo.fork){
-            portfolio.projects.push(new Project(repo));
-          }
-        });
-        portfolio.buildProjectsPage();
-      }
-    }
-  });
+  // $.ajax({
+  //   dataType: 'json',
+  //   url: 'https://api.github.com/users/W-Ely/repos',
+  //   success: function(response, status){
+  //     if (status === 'success'){
+  //       response.forEach(function(repo){
+  //         if (!repo.fork){
+  //           portfolio.projects.push(new Project(repo));
+  //         }
+  //       });
+  //       portfolio.buildProjectsPage();
+  //     }
+  //   }
+  // });
+  //duplicate not need to keep spamming api calls while testing
+  portfolio.buildProjectsPage();
 }
 
 portfolio.sortThoseProjectsByDate = function(){
@@ -59,8 +62,12 @@ portfolio.buildProjectsPage = function(){
   portfolio.sortThoseProjectsByDate();
 
   portfolio.projects.forEach(function(project) {
-    $('#projects').append(project.toHtml());
+    $('.projects-carousel').append(project.toHtml());
   });
+  //wrap all 'article's in a table and row so it will scroll to the right
+  $(".projects-carousel").wrapInner("<table><tr>");
+  // put each 'article' in a column
+  $("article").wrap("<td>");
 }
 
 portfolio.findGithubRepos();

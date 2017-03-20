@@ -1,13 +1,5 @@
 'use strict';
 
-//scroll that thing, may use later haven't decided...
-// $('.side-menu ul').on('click', 'a', function(event){
-//   event.preventDefault();
-//   console.log('clicked');
-//   $('body').animate({
-//     scrollTop: $('.' + $(this).data('content')).offset().top
-//   }, 1000);
-// });
 var nav = {
   $clickedTab: undefined
 };
@@ -40,5 +32,14 @@ nav.prepareTabs = function() {
     $( '#' + $(this).data('page') ).fadeIn();
   });
 }
+
+//scroll the project carousel
+$('.side-menu ul').on('click', 'a', function(event){
+  event.preventDefault();
+  console.log('clicked');
+  $('body').animate({
+    scrollTop: $('.' + $(this).data('content')).offset().top
+  }, 1000);
+});
 
 nav.prepareTabs();

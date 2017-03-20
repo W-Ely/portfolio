@@ -37,7 +37,7 @@
 }
 
 li:hover, .header-name:hover {
-      background-color: #111;
+  background-color: #111;
 }
 
 /*landing and bottom contact styles*/
@@ -47,6 +47,14 @@ li:hover, .header-name:hover {
   }
 
 /*project section styling*/
+/*#projects {
+  height: 100vh;
+}*/
+
+article {
+  width: 100vw;
+}
+
 .info .name {
   text-align: center;
 }
