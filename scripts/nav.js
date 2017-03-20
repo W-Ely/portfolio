@@ -8,7 +8,10 @@
 //     scrollTop: $('.' + $(this).data('content')).offset().top
 //   }, 1000);
 // });
-var nav = {};
+var nav = {
+  $clickedTab: undefined
+};
+//TODO once nav tab has been clicked, the replacment tab fades in where the other tab hides.
 
 //hide rather than scroll
 nav.prepareTabs = function() {
@@ -17,9 +20,22 @@ nav.prepareTabs = function() {
   $('nav').on('click', '*[data-page]', function(event){
     event.preventDefault();
     if ($(this).data('page') === 'landing'){
-      $('nav').find('*').fadeIn();
+      if (nav.$clickedTab){
+        nav.$clickedTab.hide();
+        $(this).next().find('ul').prepend(nav.$clickedTab);
+        nav.$clickedTab.fadeIn();
+        // $('nav').find('*').fadeIn();
+      }
     }  else {
-      $(this).hide();
+      if (!nav.$clickedTab){
+        nav.$clickedTab = $(this).detach();
+        nav.$clickedTab.hide();
+      } else {
+        $(nav.$clickedTab).hide();
+        $(this).replaceWith(nav.$clickedTab);
+        nav.$clickedTab.fadeIn();
+        nav.$clickedTab = $(this);
+      }
       $(this).siblings().fadeIn();
     }
     $('section').hide();
