@@ -47,9 +47,9 @@ li:hover, .header-name:hover {
   }
 
 /*project section styling*/
-/*#projects {
-  height: 100vh;
-}*/
+#projects {
+  background-color: gray;
+}
 
 article {
   width: 100vw;

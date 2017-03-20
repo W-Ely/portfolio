@@ -11,8 +11,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 
+    <!--Template  -->
     <script type="text/x-handlebars-template" id="project-template">
-      <article class="project {{parity}}">
+      <article class="project">
         <div class="preview">
           <a href="{{address}}">
             <img src="{{preview}}" alt="">
@@ -25,6 +26,8 @@
         </div>
       </article>
     </script>
+    <!--End Template  -->
+
   </head>
 
   <body>
@@ -50,6 +53,8 @@
     <section id="projects">
       <h1 class="top">Projects</h1>
       <div class="projects-carousel"></div>
+      <div id="back" class="project-nav fa fa-chevron-left fa-5x"></div>
+      <div id="forward" class="project-nav fa fa-chevron-right fa-5x"></div>
     </section>
 
     <section id="skills">

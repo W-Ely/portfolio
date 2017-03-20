@@ -14,13 +14,6 @@ function Project(projectData){
 }
 
 Project.prototype.toHtml = function() {
-  var parity; //used for css alternation
-  if (portfolio.count % 2 === 0){
-    parity = 'even';
-  } else {
-    parity = 'odd';
-  }
-  this.parity = parity;
   portfolio.count++;
   // useing handlebars for javasript templeting.
   return Handlebars.compile($('#project-template').html())(this);

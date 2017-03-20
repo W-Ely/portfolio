@@ -6,16 +6,12 @@
 @media screen and (min-width: 777px){
 
   /*projects area*/
-  .even .info {
+  .info {
     width:46%;
     float:right;
   }
 
   hr {
     clear:both;
-  }
-  .odd .preview {
-    float:right;
-    margin-bottom: 20px;
   }
 }
