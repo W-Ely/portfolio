@@ -5,7 +5,7 @@ var nav = {
 };
 
 //hide rather than scroll, replaces tab in place rather than simply hiding and showing. The below code fixes the hover problem for as well mobile. Menu now acts as expected.
-nav.prepareTabs = function() {
+nav.menuNav = function() {
   $('section').hide();
   // $('#landing').show();
   $('#projects').show();
@@ -35,4 +35,22 @@ nav.prepareTabs = function() {
   });
 }
 
-nav.prepareTabs();
+nav.projectNav = function(){
+  // $('.project').hide();  // hide all projects
+  // $('#0').show(); // show one one project...
+  $('.project-nav').on('click', function(){
+    if ($(this).attr('id') === 'forward'){
+      //take us forward
+      console.log('forward');
+    } else if ($(this).attr('id') === 'back') {
+      //take us back
+      console.log('back');
+    }
+  });
+}
+
+nav.preparePageNavigation = function(){
+  nav.menuNav();
+  nav.projectNav();
+}
+nav.preparePageNavigation();
