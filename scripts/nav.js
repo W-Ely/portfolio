@@ -38,19 +38,19 @@ nav.menuNav = function() {
 nav.projectNav = function(){
   var distanceLeftCSS = 0;
   $('.project-nav').on('click', function(){
-    if ($(this).attr('id') === 'forward'){
+    if ($(this).attr('id') === 'forward' && distanceLeftCSS > ($('article').length - 1) * -100){
       //take us forward
       distanceLeftCSS -= 100;
       $('.projects-carousel').animate({
         left: distanceLeftCSS + 'vw',
-     }, 1500 );
+      }, 500 );
       console.log('forward');
-    } else if ($(this).attr('id') === 'back') {
+    } else if ($(this).attr('id') === 'back' && distanceLeftCSS < 0) {
       //take us back
       distanceLeftCSS += 100;
       $('.projects-carousel').animate({
         left: distanceLeftCSS + 'vw',
-     }, 1500 );
+      }, 500 );
       console.log('back');
     }
   });
