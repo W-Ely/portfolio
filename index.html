@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 
     <script type="text/x-handlebars-template" id="project-template">
-      <div class="project {{parity}}">
+      <article class="project {{parity}}">
         <div class="preview">
           <a href="{{address}}">
             <img src="{{preview}}" alt="">
@@ -24,21 +23,22 @@
           <p class="sum">{{summery}}</p>
           <p>Last Updated: <span class="last-updated">{{lastUpdated}}</span></p>
         </div>
-        <hr>
-      </div>
+      </article>
     </script>
   </head>
 
   <body>
     <header>
-      <div class="header-name">W. Ely Paysinger</div>
       <nav class="nav">
-        <div class="drop-nav fa fa-bars fa-3x"></div>
-        <ul>
-          <li data-page="landing">About</li>
-          <li data-page="projects">Projects</li>
-          <li data-page="contact">Contact</li>
-        </ul>
+        <div data-page="landing" class="header-name">W. Ely Paysinger</div>
+        <div class="side-menu">
+          <div class="drop-nav fa fa-bars fa-3x"></div>
+          <ul>
+            <li data-page="skills">Skills</li>
+            <li data-page="projects">Projects</li>
+            <li data-page="contact">Contact</li>
+          </ul>
+        </div>
       </nav>
     </header>
 
@@ -46,13 +46,20 @@
       <h1 class="top">Welcome!</h1>
       <p>My name is Ely, I love to code. ipsum ipsum ipsum...</p>
     </section>
-
+    <!--TODO make this section the height of the screen and scroll to the right on normal scroll movments, preferable in a swipe like action, that scrolls to the next place on only a slight scroll initiation.  -->
     <section id="projects">
       <h1 class="top">Projects</h1>
-      <hr>
+      <div class="projects-carousel"></div>
+      <div id="back" class="project-nav fa fa-chevron-left fa-5x"></div>
+      <div id="forward" class="project-nav fa fa-chevron-right fa-5x"></div>
     </section>
 
-    <section id="contact">s
+    <section id="skills">
+      <h1>Skills</skills>
+      <p>Learning them now, underconstruction</p>
+    </section>
+
+    <section id="contact">
       <div class="top">
         <h1>Contact Me!</h1>
         <a class="fa fa-github" href="https://github.com/W-Ely"target="_blank">Github</a>
