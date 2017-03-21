@@ -4,7 +4,7 @@ var nav = {
   $clickedTab: undefined
 };
 
-//hide rather than scroll, replaces tab in place rather than simply hiding and showing. The below code fixes the hover problem for as well mobile. Menu now acts as expected.
+//hide rather than scroll, replaces tab in place rather than simply hiding and showing.
 nav.menuNav = function() {
   $('section').hide();
   // $('#landing').show();
@@ -44,20 +44,26 @@ nav.projectNav = function(){
       $('.projects-carousel').animate({
         left: distanceLeftCSS + 'vw',
       }, 500 );
-      console.log('forward');
     } else if ($(this).attr('id') === 'back' && distanceLeftCSS < 0) {
       //take us back
       distanceLeftCSS += 100;
       $('.projects-carousel').animate({
         left: distanceLeftCSS + 'vw',
       }, 500 );
-      console.log('back');
     }
   });
 }
 
 // Jquery solution to mobile nav not hiding on click
 nav.mobileNavFix = function(){
+  if ( $(window).width() < 777) {
+    $('.side-menu').on('mouseenter', function(){
+      $(this).find('ul').show();
+    });
+    $('.side-menu').on('mouseleave', function(){
+      $('.side-menu').find('ul').hide();
+    });
+  }
   $('.side-menu').on('click', function(){
     if ($('.drop-nav').is(':visible')){
       $(this).find('ul').toggle();
@@ -65,8 +71,18 @@ nav.mobileNavFix = function(){
   });
   // this handles screen size changes. Perhaps a phone going to landscape, or more likely a tester draging the edge on window.
   $(window).on('resize', function(){
-    if( $(window).width() >= 777 && !$('.side.menu').find('ul').is(':visible') ){
+    if ( $(window).width() >= 777 && !$('.side.menu').find('ul').is(':visible') ){
       $('.side-menu').find('ul').show();
+      $('.side-menu').off('mouseleave');
+      $('.side-menu').off('mouseenter');
+    } else if( $(window).width() < 777 ) {
+      $('.side-menu').on('mouseenter', function(){
+        $(this).find('ul').show();
+      });
+      $('.side-menu').on('mouseleave', function(){
+        console.log('mouse is out');
+        $('.side-menu').find('ul').hide();
+      });
     }
   });
 }
