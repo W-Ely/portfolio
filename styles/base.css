@@ -17,9 +17,11 @@ nav {
 
 section {
   min-height: 95vh;
-  position: absolute;
+  min-width: 100vh;
+  position: fixed;
   top: 0;
   left: 0;
+  overflow: hidden;
 }
 
 img {

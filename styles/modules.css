@@ -42,14 +42,19 @@ li:hover, .header-name:hover {
 
 /*landing and bottom contact styles*/
 .landing, .contact {
-    background: #c1eef2;
-    color: #003333
-  }
+  background: #c1eef2;
+  color: #003333
+}
 
 /*project section styling*/
-/*#projects {
-  height: 100vh;
-}*/
+.project-nav {
+  margin-top: 300px;
+}
+.projects-carousel {
+  position: absolute;
+  width: 500vh;
+
+}
 
 article {
   width: 100vw;

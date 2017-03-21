@@ -36,14 +36,21 @@ nav.menuNav = function() {
 }
 
 nav.projectNav = function(){
-  // $('.project').hide();  // hide all projects
-  // $('#0').show(); // show one one project...
+  var distanceLeftCSS = 0;
   $('.project-nav').on('click', function(){
     if ($(this).attr('id') === 'forward'){
       //take us forward
+      distanceLeftCSS -= 100;
+      $('.projects-carousel').animate({
+        left: distanceLeftCSS + 'vw',
+     }, 1500 );
       console.log('forward');
     } else if ($(this).attr('id') === 'back') {
       //take us back
+      distanceLeftCSS += 100;
+      $('.projects-carousel').animate({
+        left: distanceLeftCSS + 'vw',
+     }, 1500 );
       console.log('back');
     }
   });
