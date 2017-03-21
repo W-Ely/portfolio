@@ -26,9 +26,9 @@
   padding: 0px;
 }
 
-.side-menu:hover ul {
+/*.side-menu:hover ul {
   display: block;
-}
+}*/
 
 .side-menu li {
   height: 60px;
@@ -48,7 +48,7 @@ li:hover, .header-name:hover {
 
 /*project section styling*/
 .project-nav {
-  margin-top: 300px;
+  margin-top: 500px;
 }
 .projects-carousel {
   position: absolute;

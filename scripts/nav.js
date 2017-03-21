@@ -56,8 +56,24 @@ nav.projectNav = function(){
   });
 }
 
+// Jquery solution to mobile nav not hiding on click
+nav.mobileNavFix = function(){
+  $('.side-menu').on('click', function(){
+    if ($('.drop-nav').is(':visible')){
+      $(this).find('ul').toggle();
+    }
+  });
+  // this handles screen size changes. Perhaps a phone going to landscape, or more likely a tester draging the edge on window.
+  $(window).on('resize', function(){
+    if( $(window).width() >= 777 && !$('.side.menu').find('ul').is(':visible') ){
+      $('.side-menu').find('ul').show();
+    }
+  });
+}
+
 nav.preparePageNavigation = function(){
   nav.menuNav();
+  nav.mobileNavFix();
   nav.projectNav();
 }
 nav.preparePageNavigation();
