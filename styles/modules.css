@@ -25,7 +25,7 @@
   list-style: none;
   padding: 0px;
 }
-
+/*trying to fix mobile hover/click problem*/
 /*.side-menu:hover ul {
   display: block;
 }*/
@@ -48,7 +48,10 @@ li:hover, .header-name:hover {
 
 /*project section styling*/
 .project-nav {
-  margin-top: 500px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
 }
 .projects-carousel {
   position: absolute;

@@ -24,7 +24,6 @@ portfolio.findGithubRepos = function() {
   //   dataType: 'json',
   //   url: 'https://api.github.com/users/W-Ely/repos',
   //   success: function(response, status){
-  //     console.log(response);
   //     if (status === 'success'){
   //       response.forEach(function(repo){
   //         if (!repo.fork){
