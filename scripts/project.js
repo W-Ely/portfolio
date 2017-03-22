@@ -34,7 +34,7 @@ portfolio.findGithubRepos = function() {
   //     }
   //   }
   // });
-  //duplicate not need to keep spamming api calls while testing
+  // duplicate not need to keep spamming api calls while testing
   portfolio.buildProjectsPage();
 }
 

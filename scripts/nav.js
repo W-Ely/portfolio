@@ -1,11 +1,56 @@
 'use strict';
 
 var nav = {
-  $clickedTab: undefined
+  $clickedTab: undefined,
+  state: {
+    mobile: true,
+    dropNav: false,
+  },
 };
 
-//hide rather than scroll, replaces tab in place rather than simply hiding and showing. The below code fixes the hover problem for as well mobile. Menu now acts as expected.
-nav.menuNav = function() {
+nav.getState = function(){
+  if ( $(window).width() < 777 ) {
+    nav.state.mobile = true;
+  } else if ( $(window).width() >= 777) {
+    nav.state.mobile = false;
+  }
+};
+
+nav.setEvents = function(){
+  // this handles screen size changes. Perhaps a phone going to landscape, or more likely a tester draging the edge on window.
+  $(window).on('resize', function(){
+    nav.getState();
+    if (!nav.state.mobile){
+      console.log('state changed show menu', nav.state.mobile );
+      $('.side-menu').find('ul').show();
+    } else {
+      console.log('state changed show menu', nav.state.mobile );
+      $('.side-menu').find('ul').hide();
+    }
+  });
+  $('.side-menu').on('click', function(){
+    if (nav.state.mobile){
+      nav.state.dropNav = !nav.state.dropNav;
+      console.log('menu clicked and shown', nav.state.dropNav);
+      $(this).find('ul').toggle();
+    }
+  });
+  $('.side-menu').on('mouseleave', function(){
+    nav.state.dropNav = false;
+    console.log('mouse left, menu shown', nav.state.dropNav);
+    $('.side-menu').find('ul').hide();
+  });
+  $('.side-menu').on('mouseenter', function(){
+    if (!nav.state.dropNav){
+      nav.state.dropNav = true;
+      console.log('mouse entered, menu shown', nav.state.dropNav);
+      $('.side-menu').find('ul').show();
+    }
+  });
+};
+
+//hide rather than scroll, replaces tab in place rather than simply hiding and showing.
+nav.setMenu = function() {
   $('section').hide();
   // $('#landing').show();
   $('#projects').show();
@@ -35,29 +80,30 @@ nav.menuNav = function() {
   });
 }
 
-nav.projectNav = function(){
+nav.setProjectArrows = function(){
   var distanceLeftCSS = 0;
-  $('.project-nav').on('click', function(){
-    if ($(this).attr('id') === 'forward'){
+  $('.project-nav').on('click', '.arrow', function(){
+    if ($(this).attr('id') === 'forward' && distanceLeftCSS > ($('article').length - 1) * -100){
       //take us forward
       distanceLeftCSS -= 100;
       $('.projects-carousel').animate({
         left: distanceLeftCSS + 'vw',
-     }, 1500 );
-      console.log('forward');
-    } else if ($(this).attr('id') === 'back') {
+      }, 500 );
+    } else if ($(this).attr('id') === 'back' && distanceLeftCSS < 0) {
       //take us back
       distanceLeftCSS += 100;
       $('.projects-carousel').animate({
         left: distanceLeftCSS + 'vw',
-     }, 1500 );
-      console.log('back');
+      }, 500 );
     }
   });
 }
 
 nav.preparePageNavigation = function(){
-  nav.menuNav();
-  nav.projectNav();
+  nav.getState();
+  nav.setMenu();
+  nav.setEvents();
+  nav.setProjectArrows();
 }
+
 nav.preparePageNavigation();
