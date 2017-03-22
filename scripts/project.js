@@ -1,7 +1,10 @@
 'use strict';
 var portfolio = {
   projects: [],
-  count: 0
+  count: 0,
+  githubUrl: 'https://api.github.com/users/W-Ely/repos',
+  githubData: false,
+  localData: false
 };
 
 function Project(projectData){
@@ -18,11 +21,24 @@ Project.prototype.toHtml = function() {
   return Handlebars.compile($('#project-template').html())(this);
 };
 
+portfolio.gatherProjects = function(){
+  portfolio.findGithubRepos();
+  $.getJSON('data/projects.json', function(response, status){
+    response.forEach(function(project) {
+      if (status === 'success'){
+        portfolio.projects.push(new Project(project));
+        portfolio.localData = true;
+      }
+    });
+  });
+  
+}
+
 // bring in those sweet repos
 portfolio.findGithubRepos = function() {
   // $.ajax({
   //   dataType: 'json',
-  //   url: 'https://api.github.com/users/W-Ely/repos',
+  //   url: portfolio.githubUrl,
   //   success: function(response, status){
   //     if (status === 'success'){
   //       response.forEach(function(repo){
@@ -30,12 +46,11 @@ portfolio.findGithubRepos = function() {
   //           portfolio.projects.push(new Project(repo));
   //         }
   //       });
-  //       portfolio.buildProjectsPage();
+  //       portfolio.githubData = true;
   //     }
   //   }
   // });
-  // duplicate not need to keep spamming api calls while testing
-  portfolio.buildProjectsPage();
+  portfolio.githubData = true;
 }
 
 portfolio.sortThoseProjectsByDate = function(){
@@ -46,11 +61,6 @@ portfolio.sortThoseProjectsByDate = function(){
 }
 
 portfolio.buildProjectsPage = function(){
-
-  projectData.forEach(function(project) {
-    portfolio.projects.push(new Project(project));
-  });
-
   portfolio.sortThoseProjectsByDate();
 
   portfolio.projects.forEach(function(project) {
@@ -63,3 +73,4 @@ portfolio.buildProjectsPage = function(){
 }
 
 portfolio.findGithubRepos();
+portfolio.gatherProjects();
