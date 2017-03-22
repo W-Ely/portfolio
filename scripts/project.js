@@ -20,9 +20,7 @@ Project.prototype.toHtml = function() {
 };
 
 portfolio.gatherLocalProjects = function(){
-  console.log('getting localData');
   $.getJSON('data/projects.json', function(response){
-    console.log('test');
     response.forEach(function(project) {
       portfolio.projects.push(new Project(project));
     });
@@ -32,21 +30,21 @@ portfolio.gatherLocalProjects = function(){
 
 // bring in those sweet repos
 portfolio.findGithubRepos = function() {
-  // $.ajax({
-  //   dataType: 'json',
-  //   url: portfolio.githubUrl,
-  //   success: function(response, status){
-  //     if (status === 'success'){
-  //       response.forEach(function(repo){
-  //         if (!repo.fork){
-  //           portfolio.projects.push(new Project(repo));
-  //         }
-  //       });
-  //       portfolio.gatherLocalProjects();
-  //     }
-  //   }
-  // });
-  portfolio.gatherLocalProjects();
+  $.ajax({
+    dataType: 'json',
+    url: portfolio.githubUrl,
+    success: function(response, status){
+      if (status === 'success'){
+        response.forEach(function(repo){
+          if (!repo.fork){
+            portfolio.projects.push(new Project(repo));
+          }
+        });
+        portfolio.gatherLocalProjects();
+      }
+    }
+  });
+  // portfolio.gatherLocalProjects();
 }
 
 portfolio.sortThoseProjectsByDate = function(){
