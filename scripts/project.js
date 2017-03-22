@@ -3,8 +3,6 @@ var portfolio = {
   projects: [],
   count: 0,
   githubUrl: 'https://api.github.com/users/W-Ely/repos',
-  githubData: false,
-  localData: false
 };
 
 function Project(projectData){
@@ -21,17 +19,15 @@ Project.prototype.toHtml = function() {
   return Handlebars.compile($('#project-template').html())(this);
 };
 
-portfolio.gatherProjects = function(){
-  portfolio.findGithubRepos();
-  $.getJSON('data/projects.json', function(response, status){
+portfolio.gatherLocalProjects = function(){
+  console.log('getting localData');
+  $.getJSON('data/projects.json', function(response){
+    console.log('test');
     response.forEach(function(project) {
-      if (status === 'success'){
-        portfolio.projects.push(new Project(project));
-        portfolio.localData = true;
-      }
+      portfolio.projects.push(new Project(project));
     });
+    portfolio.buildProjectsPage();
   });
-  
 }
 
 // bring in those sweet repos
@@ -46,11 +42,11 @@ portfolio.findGithubRepos = function() {
   //           portfolio.projects.push(new Project(repo));
   //         }
   //       });
-  //       portfolio.githubData = true;
+  //       portfolio.gatherLocalProjects();
   //     }
   //   }
   // });
-  portfolio.githubData = true;
+  portfolio.gatherLocalProjects();
 }
 
 portfolio.sortThoseProjectsByDate = function(){
@@ -73,4 +69,3 @@ portfolio.buildProjectsPage = function(){
 }
 
 portfolio.findGithubRepos();
-portfolio.gatherProjects();
