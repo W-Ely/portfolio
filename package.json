@@ -1,0 +1,28 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "A collection of projects",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/W-Ely/portfolio.git"
+  },
+  "keywords": [
+    "protfolio",
+    "code",
+    "fellows"
+  ],
+  "author": "Ely",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/W-Ely/portfolio/issues"
+  },
+  "homepage": "https://github.com/W-Ely/portfolio#readme"
+}
