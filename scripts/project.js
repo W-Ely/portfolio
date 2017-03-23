@@ -8,9 +8,9 @@ var portfolio = {
 function Project(projectData){
   this.name = projectData.name;
   //TODO if the project has a live address use it. Maybe for thumbnail?
-  this.address = projectData.html_url;
-  this.summery = projectData.description;
-  this.lastUpdated = projectData.updated_at.slice(0, 10);
+  this.address = projectData.html_url,
+  this.summary = projectData.description,
+  this.lastUpdated = projectData.updated_at.slice(0, 10),
   this.preview = 'assets/Sceenshot.png'
 }
 
