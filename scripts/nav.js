@@ -3,8 +3,10 @@
 var nav = {
   $clickedTab: undefined,
   state: {
+    //these flags help pick and rest nav functionality.
     mobile: true,
     dropNav: false,
+    touch: false,
   },
 };
 
@@ -20,30 +22,31 @@ nav.setEvents = function(){
   // this handles screen size changes. Perhaps a phone going to landscape, or more likely a tester draging the edge on window.
   $(window).on('resize', function(){
     nav.getState();
+    nav.state.touch = false;
     if (!nav.state.mobile){
-      console.log('state changed show menu', nav.state.mobile );
       $('.side-menu').find('ul').show();
     } else {
-      console.log('state changed show menu', nav.state.mobile );
       $('.side-menu').find('ul').hide();
     }
+  });
+  $('.side-menu').on('touchstart', function(){
+    nav.state.touch = true;
   });
   $('.side-menu').on('click', function(){
     if (nav.state.mobile){
       nav.state.dropNav = !nav.state.dropNav;
-      console.log('menu clicked and shown', nav.state.dropNav);
       $(this).find('ul').toggle();
     }
   });
   $('.side-menu').on('mouseleave', function(){
-    nav.state.dropNav = false;
-    console.log('mouse left, menu shown', nav.state.dropNav);
-    $('.side-menu').find('ul').hide();
+    if (nav.state.mobile) {
+      nav.state.dropNav = false;
+      $('.side-menu').find('ul').hide();
+    }
   });
   $('.side-menu').on('mouseenter', function(){
-    if (!nav.state.dropNav){
+    if (!nav.state.dropNav && nav.state.mobile && !nav.state.touch){
       nav.state.dropNav = true;
-      console.log('mouse entered, menu shown', nav.state.dropNav);
       $('.side-menu').find('ul').show();
     }
   });
@@ -52,8 +55,8 @@ nav.setEvents = function(){
 //hide rather than scroll, replaces tab in place rather than simply hiding and showing.
 nav.setMenu = function() {
   $('section').hide();
-  // $('#landing').show();
-  $('#projects').show();
+  $('#landing').show();
+  // $('#projects').show();
   $('nav').on('click', '*[data-page]', function(event){
     event.preventDefault();
     if ($(this).data('page') === 'landing'){
@@ -67,7 +70,6 @@ nav.setMenu = function() {
       if (!nav.$clickedTab){
         nav.$clickedTab = $(this).detach();
         nav.$clickedTab.hide();
-        // debugger;
       } else {
         $(nav.$clickedTab).hide();
         $(this).replaceWith(nav.$clickedTab);

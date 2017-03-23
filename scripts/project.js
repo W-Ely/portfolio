@@ -1,15 +1,16 @@
 'use strict';
 var portfolio = {
   projects: [],
-  count: 0
+  count: 0,
+  githubUrl: 'https://api.github.com/users/W-Ely/repos',
 };
 
 function Project(projectData){
   this.name = projectData.name;
   //TODO if the project has a live address use it. Maybe for thumbnail?
-  this.address = projectData.html_url;
-  this.summery = projectData.description;
-  this.lastUpdated = projectData.updated_at.slice(0, 10);
+  this.address = projectData.html_url,
+  this.summary = projectData.description,
+  this.lastUpdated = projectData.updated_at.slice(0, 10),
   this.preview = 'assets/Sceenshot.png'
 }
 
@@ -18,24 +19,32 @@ Project.prototype.toHtml = function() {
   return Handlebars.compile($('#project-template').html())(this);
 };
 
+portfolio.gatherLocalProjects = function(){
+  $.getJSON('data/projects.json', function(response){
+    response.forEach(function(project) {
+      portfolio.projects.push(new Project(project));
+    });
+    portfolio.buildProjectsPage();
+  });
+}
+
 // bring in those sweet repos
 portfolio.findGithubRepos = function() {
-  // $.ajax({
-  //   dataType: 'json',
-  //   url: 'https://api.github.com/users/W-Ely/repos',
-  //   success: function(response, status){
-  //     if (status === 'success'){
-  //       response.forEach(function(repo){
-  //         if (!repo.fork){
-  //           portfolio.projects.push(new Project(repo));
-  //         }
-  //       });
-  //       portfolio.buildProjectsPage();
-  //     }
-  //   }
-  // });
-  // duplicate not need to keep spamming api calls while testing
-  portfolio.buildProjectsPage();
+  $.ajax({
+    dataType: 'json',
+    url: portfolio.githubUrl,
+    success: function(response, status){
+      if (status === 'success'){
+        response.forEach(function(repo){
+          if (!repo.fork){
+            portfolio.projects.push(new Project(repo));
+          }
+        });
+        portfolio.gatherLocalProjects();
+      }
+    }
+  });
+  // portfolio.gatherLocalProjects();
 }
 
 portfolio.sortThoseProjectsByDate = function(){
@@ -46,11 +55,6 @@ portfolio.sortThoseProjectsByDate = function(){
 }
 
 portfolio.buildProjectsPage = function(){
-
-  projectData.forEach(function(project) {
-    portfolio.projects.push(new Project(project));
-  });
-
   portfolio.sortThoseProjectsByDate();
 
   portfolio.projects.forEach(function(project) {
