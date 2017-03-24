@@ -34,16 +34,15 @@ portfolio.findGithubRepos = function() {
     dataType: 'json',
     url: portfolio.githubUrl,
     success: function(response, status){
-      if (status === 'success'){
-        response.forEach(function(repo){
-          if (!repo.fork){
-            portfolio.projects.push(new Project(repo));
-          }
-        });
-        portfolio.gatherLocalProjects();
-      }
+      response.forEach(function(repo){
+        if (!repo.fork){
+          portfolio.projects.push(new Project(repo));
+        }
+      });
+      portfolio.gatherLocalProjects();
     }
   });
+  // line remains for development, prevent unneed api calls during testing. 
   // portfolio.gatherLocalProjects();
 }
 
