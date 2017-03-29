@@ -38,7 +38,7 @@
       url: portfolio.githubUrl,
       success: function(response, status){
         response.forEach(function(repo){
-          if (!repo.fork){
+          if (!repo.fork) {
             portfolio.projects.push(new Project(repo));
           }
         });
@@ -58,7 +58,6 @@
 
   portfolio.buildProjectsPage = function(){
     portfolio.sortThoseProjectsByDate();
-
     portfolio.projects.forEach(function(project) {
       $('.projects-carousel').append(project.toHtml());
     });
@@ -71,5 +70,6 @@
   portfolio.findGithubRepos();
 
   module.portfolio = portfolio;
+  module.Project = Project;
 
 }(window));
