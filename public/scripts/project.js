@@ -65,6 +65,9 @@
     $(".projects-carousel").wrapInner("<table><tr>");
     // put each 'article' in a column
     $("article").wrap("<td>");
+    //a map and a reduce for educational purpose. 
+    let projectNames = portfolio.projects.map( project => project.name).reduce((acc, name) => acc + ', ' + name);
+    console.log(projectNames);
   }
 
   portfolio.findGithubRepos();
