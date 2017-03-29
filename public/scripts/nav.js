@@ -18,7 +18,7 @@
       nav.state.mobile = false;
     }
   };
-
+  //TODO:Does not work on iPhone, which means it doesnt work on most phones.
   nav.setEvents = function(){
     // this handles screen size changes. Perhaps a phone going to landscape, or more likely a tester draging the edge on window.
     $(window).on('resize', function(){

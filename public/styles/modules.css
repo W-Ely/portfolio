@@ -49,14 +49,14 @@ li:hover, .header-name:hover {
 /*project section styling*/
 .project-nav {
   position: absolute;
-  bottom: 0;
+  bottom: 15;
   left: 0;
   z-index: 9;
 }
+
 .projects-carousel {
   position: absolute;
   width: 500vh;
-
 }
 
 article {
