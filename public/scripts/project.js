@@ -22,9 +22,9 @@
     return Handlebars.compile($('#project-template').html())(this);
   };
 
-  portfolio.gatherLocalProjects = function(){
-    $.getJSON('data/projects.json', function(response){
-      response.forEach(function(project) {
+  portfolio.gatherLocalProjects = () => {
+    $.getJSON('data/projects.json', response => {
+      response.forEach(project => {
         portfolio.projects.push(new Project(project));
       });
       portfolio.buildProjectsPage();
@@ -32,15 +32,13 @@
   }
 
   // bring in those sweet repos
-  portfolio.findGithubRepos = function() {
+  portfolio.findGithubRepos = () => {
     $.ajax({
       dataType: 'json',
       url: portfolio.githubUrl,
-      success: function(response, status){
-        response.forEach(function(repo){
-          if (!repo.fork) {
-            portfolio.projects.push(new Project(repo));
-          }
+      success: (response, status) => {
+        response.forEach(repo => {
+          if (!repo.fork) portfolio.projects.push(new Project(repo));
         });
         portfolio.gatherLocalProjects();
       }
@@ -49,25 +47,25 @@
     // portfolio.gatherLocalProjects();
   }
 
-  portfolio.sortThoseProjectsByDate = function(){
-    portfolio.projects.sort(function(a, b){
+  portfolio.sortThoseProjectsByDate = () => {
+    portfolio.projects.sort((a, b) => {
       //regEx to remove hyphens. could use new Date() but didn't
       return b.lastUpdated.replace(/-/g, '') - a.lastUpdated.replace(/-/g, '');
     });
   }
 
-  portfolio.buildProjectsPage = function(){
+  portfolio.buildProjectsPage = () => {
     portfolio.sortThoseProjectsByDate();
-    portfolio.projects.forEach(function(project) {
+    portfolio.projects.forEach(project => {
       $('.projects-carousel').append(project.toHtml());
     });
     //wrap all 'article's in a table and row so it will scroll to the right
     $(".projects-carousel").wrapInner("<table><tr>");
     // put each 'article' in a column
     $("article").wrap("<td>");
-    //a map and a reduce for educational purpose. 
-    let projectNames = portfolio.projects.map( project => project.name).reduce((acc, name) => acc + ', ' + name);
-    console.log(projectNames);
+    //a map and a reduce for educational purpose.
+    // let projectNames = portfolio.projects.map( project => project.name).reduce((acc, name) => acc + ', ' + name);
+    // console.log(projectNames);
   }
 
   portfolio.findGithubRepos();
