@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 6767;
 
 app.use(express.static('./public'));
 
-app.get('/', function(req, res){
+app.get('*', function(req, res){
   res.sendFile('/index.html', {root: './public'});
 });
 

@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 
     <script type="text/x-handlebars-template" id="project-template">
       <article class="project {{parity}}">
@@ -31,13 +29,13 @@
   <body>
     <header>
       <nav class="nav">
-        <div data-page="landing" class="header-name">W. Ely Paysinger</div>
+        <div data-page="landing" class="header-name"><a href="/">W. Ely Paysinger</a></div>
         <div class="side-menu">
           <div class="drop-nav fa fa-bars fa-3x"></div>
           <ul>
-            <li data-page="skills">Skills</li>
-            <li data-page="projects">Projects</li>
-            <li data-page="contact">Contact</li>
+            <li data-page="skills"><a href="/skills">Skills</a></li>
+            <li data-page="projects"><a href="/projects">Projects</a></li>
+            <li data-page="contact"><a href="/contact">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -70,7 +68,22 @@
         <a class="fa fa-linkedin" href="https://www.linkedin.com/in/w-ely-paysinger/" target="_blank">LinkedIn</a>
       </div>
     </section>
-    <script type="text/javascript" src="scripts/nav.js"></script>
-    <script type="text/javascript" src="scripts/project.js"></script>
+    <!--Vendor  -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.7.1/page.js"></script>
+    
+    <!--Controllers  -->
+    <script type="text/javascript" src="scripts/controllers/projectsController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/skillsController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/contactController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/welcomeController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/routes.js"></script>
+
+    <!--models  -->
+    <script type="text/javascript" src="scripts/models/project.js"></script>
+    <!--views  -->
+    <script type="text/javascript" src="scripts/views/nav.js"></script>
+
   </body>
 </html>
