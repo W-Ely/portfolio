@@ -5,7 +5,7 @@
   const portfolio = {
     projects: [],
     count: 0,
-    githubUrl: 'https://api.github.com/users/W-Ely/repos',
+    githubUrl: '/github/users/W-Ely/repos',
   };
 
   function Project(projectData){
@@ -33,16 +33,14 @@
 
   // bring in those sweet repos
   portfolio.findGithubRepos = () => {
-    $.ajax({
-      dataType: 'json',
-      url: portfolio.githubUrl,
-      success: (response, status) => {
+    $.get(portfolio.githubUrl)
+    .then( (response) => {
         response.forEach(repo => {
           if (!repo.fork) portfolio.projects.push(new Project(repo));
         });
         portfolio.gatherLocalProjects();
       }
-    });
+    );
     // line remains for development, prevent unneed api calls during testing.
     // portfolio.gatherLocalProjects();
   }
